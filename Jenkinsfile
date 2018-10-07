@@ -8,13 +8,13 @@ node{
 
   stage('SonarQube Analysis') {
        withSonarQubeEnv('sonar-6') {
-         sh "mvn sonar:sonar"
+         sh "mvn -Dsonar.branch.name=${env.GIT_BRANCH} sonar:sonar"
        }
    }
 
 
-    stage("Quality Gate Statuc Check"){
-          timeout(time: 1, unit: 'HOURS') {
+    stage("Quality Gate"){
+          timeout(time: 3, unit: 'MINUTES') {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
