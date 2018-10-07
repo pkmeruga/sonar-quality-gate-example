@@ -8,7 +8,7 @@ node{
 
   stage('SonarQube Analysis') {
        withSonarQubeEnv('sonar-6') {
-         sh "mvn -Dsonar.branch.name=${env.GIT_BRANCH} sonar:sonar"
+         sh "mvn -Dsonar.branch.name=${BRANCH_NAME} sonar:sonar"
        }
    }
 
