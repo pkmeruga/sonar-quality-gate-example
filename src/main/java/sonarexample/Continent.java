@@ -7,7 +7,7 @@ public enum Continent {
     EUROPE(50, 39310000);
 
     public  int countryCount;  // Noncompliant
-    private int landMass;
+    public int landMass;
 
     Continent(int countryCount, int landMass) {
         // ...
