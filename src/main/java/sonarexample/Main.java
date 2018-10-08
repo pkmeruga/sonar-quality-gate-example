@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Deprecated
 public class Main {
 
-    public static String CONST = "CONST";
+/*    public static String CONST = "CONST";
 
     @Deprecated
     public static void main(String[] args) {
@@ -23,5 +23,5 @@ public class Main {
 
         target =- num;  // Noncompliant; target = -3. Is that really what's meant?
         target =+ num; // Noncompliant; target = 3
-    }
+    }*/
 }
