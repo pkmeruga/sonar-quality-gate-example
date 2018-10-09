@@ -8,7 +8,7 @@ node{
   stage('SonarQube') {
        withSonarQubeEnv('sonar-6') {
            sh 'mvn -Dsonar.branch.name=${BRANCH_NAME} sonar:sonar ' +
-           '-f all/pom.xml ' +
+           '-f pom.xml ' +
            '-Dsonar.language=java ' +
            '-Dsonar.sources=. ' +
            '-Dsonar.tests=. '
