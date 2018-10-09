@@ -2,13 +2,19 @@ node{
 
 
    stage('Build') {
-      sh 'mvn clean package'
+      sh "mvn clean package"
    }
 
   stage('SonarQube') {
        withSonarQubeEnv('sonar-6') {
-         sh 'mvn -Dsonar.branch.name=${BRANCH_NAME} sonar:sonar'
-
+           sh 'mvn -Dsonar.branch.name=${BRANCH_NAME} sonar:sonar ' +
+           '-f all/pom.xml ' +
+           '-Dsonar.language=java ' +
+           '-Dsonar.sources=. ' +
+           '-Dsonar.tests=. ' +
+           '-Dsonar.test.inclusions=**/*Test*/** ' +
+           '-Dsonar.exclusions=**/*Test*/**'
+       }
    }
 
 
