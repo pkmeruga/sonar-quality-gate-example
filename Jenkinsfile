@@ -1,17 +1,18 @@
 node{
 
-   stage('Compile-Package'){
-      sh "mvn package"
+
+   stage('Build') {
+      sh "mvn clean package"
    }
 
-  stage('SonarQube Analysis') {
+  stage('SonarQube') {
        withSonarQubeEnv('sonar-6') {
          sh "mvn -Dsonar.branch.name=${BRANCH_NAME} sonar:sonar"
        }
    }
 
 
-    stage("Quality Gate"){
+    stage("QualityGate") {
           timeout(time: 3, unit: 'MINUTES') {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
