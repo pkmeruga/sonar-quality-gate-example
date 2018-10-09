@@ -11,9 +11,7 @@ node{
            '-f all/pom.xml ' +
            '-Dsonar.language=java ' +
            '-Dsonar.sources=. ' +
-           '-Dsonar.tests=. ' +
-           '-Dsonar.test.inclusions=**/*Test*/** ' +
-           '-Dsonar.exclusions=**/*Test*/**'
+           '-Dsonar.tests=. '
        }
    }
 
